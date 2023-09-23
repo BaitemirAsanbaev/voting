@@ -4,7 +4,6 @@
   max-width: 700px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
   .hide{
     transform: scaleX(0);
@@ -39,8 +38,6 @@
       height: 200px;
 
       background-size: contain;
-
-      // height: auto;
     }
     .bottom-info{
       display: flex;
@@ -50,6 +47,7 @@
   }
   h2 {
     text-align: center;
+    margin-bottom: 30px;
   }
 
   .form-group {
@@ -65,6 +63,7 @@
     input[type='text'],
     input[type='email'],
     input[type='password'],
+    input[type='checkbox'],
     select,
     input[type='date'] {
       width: 100%;
@@ -80,16 +79,30 @@
     }
   }
   .turn{
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background-image: url('./assets/turn.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .agreement-label{
+    padding: 20px;
+  }
+  .disabled{
+    cursor: no-drop;
+    background-color: #ccc;
+    
     width: 100%;
     padding: 10px;
-    background-color: #cdcdcd;
-    color: #000000;
+    
+    color: #fff;
     border: none;
     border-radius: 3px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #3d3d3d;
+    &:hover{
+      background-color: #ccc;
     }
   }
   .submit-button {

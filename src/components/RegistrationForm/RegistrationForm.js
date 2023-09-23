@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./RegistrationForm.module.scss"; // Import your CSS Module
+import styles from "./RegistrationForm.module.scss";
 import axios from "axios";
 import { api } from "../../api";
 function RegistrationForm() {
@@ -21,6 +21,7 @@ function RegistrationForm() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [side, setSide] = useState("front");
+  const [agree, setAgree] = useState(false);
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -265,7 +266,6 @@ function RegistrationForm() {
           className={styles["turn"]}
           onClick={() => setSide(side === "back" ? "front" : "back")}
         >
-          Turn around
         </div>
         <div>
           <div className={styles["form-group"]}>
@@ -302,10 +302,11 @@ function RegistrationForm() {
             />
           </div>
         </div>
-
-        <button type="submit" className={styles["submit-button"]}>
+        <input value={agree} type="checkbox" id="agreement" onChange={()=>setAgree(!agree)}/>
+        <label className={styles['agreement-label']} htmlFor="agreement">Я согласен со всеми условиями и политикой сайта. <a href="https://www.transparency.org/en" target="_blank">Условия</a></label>
+        <button disabled={true}  type="submit" className={styles["submit-button", !agree?"disabled":"submit-button"]}>
           Register
-        </button>
+        </button> 
       </form>
     </div>
   );
