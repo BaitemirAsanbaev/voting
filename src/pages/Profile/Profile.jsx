@@ -16,7 +16,7 @@ const Profile = () => {
         <div className={styles.white}></div>
         <div className={styles.absolute}>
           <svg
-            width="180"
+            width="190"
             height="180"
             viewBox="0 0 188 150"
             fill="none"
@@ -77,7 +77,12 @@ const Profile = () => {
           </button>
         </div>
       </section>
-      <ProfilePost/>
+      <section className={styles.block}>
+        <div >{activeButton === 1 && <ProfilePost />}</div>
+        <div>{activeButton === 2 && <div>2</div>}</div>
+        <div>{activeButton === 3 && <div>3</div>}</div>
+        <div>{activeButton === 4 && <div>4</div>}</div>
+      </section>
     </div>
   );
 };

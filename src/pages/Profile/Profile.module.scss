@@ -3,7 +3,6 @@ $primary_color: #5b71ce;
 
 .Profile {
   width: 100%;
-  height: 100%;
 
   .header {
     width: 95%;
@@ -92,4 +91,12 @@ $primary_color: #5b71ce;
       }
     }
   }
+}
+
+.block {
+  height: 100vh;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+
 }
