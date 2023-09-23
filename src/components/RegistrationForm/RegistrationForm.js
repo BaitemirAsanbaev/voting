@@ -303,8 +303,8 @@ function RegistrationForm() {
           </div>
         </div>
         <input value={agree} type="checkbox" id="agreement" onChange={()=>setAgree(!agree)}/>
-        <label className={styles['agreement-label']} htmlFor="agreement">Я согласен со всеми условиями и политикой сайта. <a href="https://www.transparency.org/en" target="_blank">Условия</a></label>
-        <button disabled={true}  type="submit" className={styles["submit-button", !agree?"disabled":"submit-button"]}>
+        <label className={styles['agreement-label']} htmlFor="agreement">Я согласен со всеми условиями и политикой сайта. <a href="https://www.transparency.org/en" target="_blank" rel="noreferrer">Условия</a></label>
+        <button disabled={true}  type="submit" className={styles[!agree?"disabled":"submit-button"]}>
           Register
         </button> 
       </form>

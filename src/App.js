@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import Nav from "./components/Nav/Nav";
+import Post from "./pages/Post/Post";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/post/:id" element={<Post />} />
         </Routes>
       </div>
     </div>
