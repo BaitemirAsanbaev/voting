@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./PostForm.module.scss"; // Import the SCSS styles
 import { api } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { addPost } from "../../redux/postsSlice";
 
 const PostForm = () => {
   const [formData, setFormData] = useState({
@@ -18,38 +20,44 @@ const PostForm = () => {
     });
   };
 
+  const last = useSelector(state=>state.posts.posts[state.posts.posts.length-1])
+  const dispatch = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("access");
-    console.log([api + "posts/create/", formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    }]);
+    // const token = localStorage.getItem("access");
+    const user = localStorage.getItem("user");
+    dispatch(addPost({
+      id:last.id+1, 
+      title: formData.title,
+      content: formData.content,
+      author:user,
+      agreement:0,
+      disagreement:0,
+      created_date:"24-09-2023  "
+    }))
 
-    axios
-      .post(api + "posts/create/", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        // Handle the response data (e.g., confirmation of the post creation)
-        console.log(response.data);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error("Request failed:", error);
-      });
+    // axios
+    //   .post(api + "posts/create/", formData, {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then((response) => {
+    //     // Handle the response data (e.g., confirmation of the post creation)
+    //     console.log(response.data);
+    //   })
+    //   .catch((error) => {
+    //     // Handle errors
+    //     console.error("Request failed:", error);
+    //   });
 
-    // Clear form fields after submission
-    setFormData({
-      title: "",
-      content: "",
-    });
+    // // Clear form fields after submission
+    // setFormData({
+    //   title: "",
+    //   content: "",
+    // });
   };
 
   return (

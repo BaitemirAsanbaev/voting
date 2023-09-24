@@ -14,7 +14,7 @@ function LoginForm() {
     // You can add your login logic here, such as sending a request to your server
     axios.post(api+'login/', { email, password }).then((res)=>{
       localStorage.setItem('access', res.data.access_token)
-      // localStorage.setItem('email', email)
+      // localStorage.setItem('user', {email})
     });
   };
 

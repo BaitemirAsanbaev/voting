@@ -19,6 +19,9 @@ const Nav = () => {
           <NavLink to="/news">Новости</NavLink>
         </li>
         <li>
+          <NavLink to="/ins">Гайды</NavLink>
+        </li>
+        <li>
           {authed ? (
             <NavLink to="/profile">Профиль</NavLink>
           ) : (

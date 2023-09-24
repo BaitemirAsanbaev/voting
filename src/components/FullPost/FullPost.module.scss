@@ -93,3 +93,26 @@ a {
   border: none;
   border-radius: 4px;
 }
+hr{
+  margin: 30px 0px;
+}
+.comments{
+  display: flex;
+  flex-direction: column;
+  .comment{
+    padding: 20px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    >div{
+      margin: 10px 0px;
+    }
+    >div:first-child{
+      font-size: 12px;
+      font-weight: bold;
+    }
+    >div:last-child{
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+}

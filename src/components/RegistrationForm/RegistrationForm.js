@@ -64,7 +64,7 @@ function RegistrationForm() {
           password,
         })
         .then((res) => {
-          // localStorage.setItem("email", email);
+          localStorage.setItem("user", {first_name, middle_name, last_name});
           localStorage.setItem("access", res.data.access_token);
         })
         .catch((error) => {

@@ -11,10 +11,10 @@ function Post({ data }) {
       <div className={styles["post-title"]}>{data.title}</div>
       <div className={styles["post-description"]}>{ data.content.slice(0, 100)} ...</div>
       <div className={styles["post-footer"]}>
-        <Link to={"post/"+data.id} className={styles["read-more"]}>Read More</Link>
+        <Link to={"post/"+data.id} className={styles["read-more"]}>Подробнее</Link>
         <div className={styles["votes"]}>
-          <div className={styles.agreement}>{data.agreement} Votes</div>
-          <div className={styles.disagreement}>{data.disagreement} Dislike</div>
+          <div className={styles.agreement}>{data.agreement} За</div>
+          <div className={styles.disagreement}>{data.disagreement} Против</div>
         </div>
       </div>
     </div>
