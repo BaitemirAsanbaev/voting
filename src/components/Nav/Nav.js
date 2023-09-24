@@ -5,12 +5,12 @@ import classes from "./Nav.module.scss";
 const Nav = () => {
   const [authed, setAuthed] = useState(false);
   useEffect(() => {
-    const token = localStorage.getItem("access");
+    const token = localStorage.getItem("formData");
     if (token) setAuthed(true);
   }, []);
   return (
     <nav className={classes.Nav}>
-      <span>Logo</span>
+      <span>My vote</span>
       <ul>
         <li>
           <NavLink to="/">Главная</NavLink>

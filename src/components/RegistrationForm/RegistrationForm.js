@@ -25,63 +25,33 @@ function RegistrationForm() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log({
-    //   first_name,
-    //   middle_name,
-    //   last_name,
-    //   gender,
-    //   citizenship,
-    //   date_of_birth,
-    //   document_id,
-    //   date_of_expiry,
-    //   place_of_birth,
-    //   authority,
-    //   date_of_issue,
-    //   ethnicity,
-    //   personal_number,
-    //   email,
-    //   phone_number: phone,
-    //   password,
-    // });
-    try {
-      axios
-        .post(api + "register/", {
-          first_name,
-          middle_name,
-          last_name,
-          gender,
-          citizenship,
-          date_of_birth,
-          document_id,
-          date_of_expiry,
-          place_of_birth,
-          authority,
-          date_of_issue,
-          ethnicity,
-          personal_number,
-          email,
-          phone_number: phone,
-          password,
-        })
-        .then((res) => {
-          localStorage.setItem("user", {first_name, middle_name, last_name});
-          localStorage.setItem("access", res.data.access_token);
-        })
-        .catch((error) => {
-          if (error.response) {
-            console.error("Server responded with:", error.response.data);
-            console.error("Status code:", error.response.status);
-          } else if (error.request) {
-            console.error("No response received:", error.request);
-          } else {
-            console.error("Error:", error.message);
-          }
-        });
-    } catch (e) {
-      console.log(e);
-    }
+  
+    // Create an object to hold the form data
+    const formData = {
+      first_name,
+      middle_name,
+      last_name,
+      gender,
+      citizenship,
+      date_of_birth,
+      document_id,
+      date_of_expiry,
+      place_of_birth,
+      authority,
+      date_of_issue,
+      ethnicity,
+      personal_number,
+      email,
+      phone_number: phone,
+      password,
+    };
+  
+    // Store the form data in localStorage
+    localStorage.setItem("formData", JSON.stringify(formData));
+  
+    // Redirect or perform any other actions as needed
   };
-
+  
   return (
     <div className={styles["registration-form"]}>
       <h2>Registration</h2>

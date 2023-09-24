@@ -6,6 +6,7 @@ import Register from "./pages/Auth/Register";
 import Nav from "./components/Nav/Nav";
 import Post from "./pages/Post/Post";
 import Profile from "./pages/Profile/Profile";
+import Instructions from "./pages/Instructions/Instructions";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/ins" element={<Instructions />} />
           <Route path="/register" element={<Register />} />
           <Route path="/post/:id" element={<Post />} />
           <Route path="/profile" element={<Profile />} />

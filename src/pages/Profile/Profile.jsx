@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Search from "../../components/Search/Search";
 import styles from "./Profile.module.scss";
 import PostForm from "../../components/PostForm/PostForm";
 import PostsList from "../../components/PostsList/PostsList";
@@ -8,6 +9,7 @@ const Profile = () => {
   const handleButtonClick = (index) => {
     setActiveButton(index);
   };
+  const data = JSON.parse(localStorage.getItem("formData"));
   return (
     <div className={styles["Profile"]}>
       <section className={styles.header}>
@@ -15,9 +17,22 @@ const Profile = () => {
         <div className={styles.gray}></div>
         <div className={styles.white}></div>
         <div className={styles.absolute}>
-          <img src={"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"} alt="prof"/>
+          <img
+            src={"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
+            width={200}
+            alt="prof"
+          />
 
-          <h4>{localStorage.getItem('user')}</h4>
+          <div className={styles.name}>
+            <span>{data.first_name}</span>  
+            <span> {data.middle_name}</span>  
+            <span> {data.last_name}</span>
+          </div>
+          <div className={styles.info}>
+            <span>{data.citizenship}</span>  
+            <span> {data.email}</span>  
+            <span> {data.phone_number}</span>
+          </div>
         </div>
       </section>
 
@@ -66,10 +81,18 @@ const Profile = () => {
         </div>
       </section>
       <section className={styles.block}>
-        <div >{activeButton === 1 && <PostsList/>}</div>
-        <div>{activeButton === 2 && <div><FilteredPostsList/></div>}</div>
-        <div>{activeButton === 3 && <div>3</div>}</div>
-        <div>{activeButton === 4 && <div><PostForm/></div>}</div>
+        <div className={styles["profile-kukuha"]}>
+          {activeButton === 1 && <PostsList />}
+        </div>
+        <div className={styles["profile-kukuha"]}>
+          {activeButton === 2 && <FilteredPostsList />}
+        </div>
+        <div className={styles["profile-kukuha"]}>
+          {activeButton === 3 && <PostsList />}
+        </div>
+        <div className={styles["profile-kukuha"]}>
+          {activeButton === 4 && <PostForm />}
+        </div>
       </section>
     </div>
   );
