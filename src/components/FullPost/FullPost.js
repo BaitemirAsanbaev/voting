@@ -29,6 +29,8 @@ const FullPost = ({ id }) => {
       <div className={styles['comments']}>
         <hr></hr>
         <h2>Комментарии</h2>
+        <input className={styles.comInp} type="text"/>
+        <button>Отправить</button>
         {post.comments.map((item)=>{
           return <div className={styles['comment']}>
             <div>{item.author}</div>

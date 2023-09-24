@@ -99,6 +99,17 @@ hr{
 .comments{
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  .comInp{
+    background-color: transparent;
+    border: 2px solid grey;
+    height: 50px;
+    width: 500px;
+  }
+  button{
+    width: 500px;
+    transform: translate(-10px);
+  }
   .comment{
     padding: 20px;
     width: 100%;

@@ -4,6 +4,7 @@ import styles from "./Profile.module.scss";
 import PostForm from "../../components/PostForm/PostForm";
 import PostsList from "../../components/PostsList/PostsList";
 import FilteredPostsList from "../../components/FilteredPostsList/FilteredPostsList";
+import Message from "../../components/Message/Message";
 const Profile = () => {
   const [activeButton, setActiveButton] = useState(1);
   const handleButtonClick = (index) => {
@@ -88,7 +89,12 @@ const Profile = () => {
           {activeButton === 2 && <FilteredPostsList />}
         </div>
         <div className={styles["profile-kukuha"]}>
-          {activeButton === 3 && <PostsList />}
+          {activeButton === 3 && <>
+            <Message/>
+            <Message/>
+            <Message/>
+            <Message/>
+            <Message/></>}
         </div>
         <div className={styles["profile-kukuha"]}>
           {activeButton === 4 && <PostForm />}
