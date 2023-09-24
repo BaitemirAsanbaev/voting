@@ -6,6 +6,7 @@ import Register from "./pages/Auth/Register";
 import Nav from "./components/Nav/Nav";
 import Profile from "./pages/Profile/Profile";
 import Instructions from "./pages/Instructions/Instructions";
+import News from "./pages/News/News";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/ins" element={<Instructions />} />
+          <Route path="/news" element={<News />} />
+
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
