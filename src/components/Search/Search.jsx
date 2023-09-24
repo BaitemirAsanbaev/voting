@@ -1,9 +1,7 @@
-import { useState } from "react";
-import styles from "./ProfilePost.module.scss";
+import React, { useState } from "react";
+import styles from "./Search.module.scss";
 
-const ProfilePost = () => {
-  const [username, setUsername] = useState("user1"); 
-
+const Search = () => {
   const data = [
     {
       id: 38,
@@ -31,6 +29,8 @@ const ProfilePost = () => {
       voice: 1835,
       category: "религия",
       author: "админ",
+      author: "админ",
+      author: "user1",
     },
     {
       id: 41,
@@ -115,41 +115,51 @@ const ProfilePost = () => {
     },
   ];
 
-  
-    const filteredPosts = data.filter((post) => post.author === username);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-    console.log(filteredPosts)
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const filteredData = data.filter((item) => {
+    if (selectedCategory === "") {
+      return true;
+    } else {
+      return item.category === selectedCategory;
+    }
+  });
+
   return (
-  <>
-  {filteredPosts.map((i, index) => (
-    <div className={styles.ProfilePost}>
-      <h2>{i.title}</h2>
-      <span>
-        <svg
-          width="20"
-          height="18"
-          viewBox="0 0 19 17"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 15.4062C0 16.2861 0.91183 17 2.03571 17H16.9643C18.0882 17 19 16.2861 19 15.4062V6.375H0V15.4062ZM13.5714 8.89844C13.5714 8.6793 13.8004 8.5 14.0804 8.5H15.7768C16.0567 8.5 16.2857 8.6793 16.2857 8.89844V10.2266C16.2857 10.4457 16.0567 10.625 15.7768 10.625H14.0804C13.8004 10.625 13.5714 10.4457 13.5714 10.2266V8.89844ZM13.5714 13.1484C13.5714 12.9293 13.8004 12.75 14.0804 12.75H15.7768C16.0567 12.75 16.2857 12.9293 16.2857 13.1484V14.4766C16.2857 14.6957 16.0567 14.875 15.7768 14.875H14.0804C13.8004 14.875 13.5714 14.6957 13.5714 14.4766V13.1484ZM8.14286 8.89844C8.14286 8.6793 8.37187 8.5 8.65179 8.5H10.3482C10.6281 8.5 10.8571 8.6793 10.8571 8.89844V10.2266C10.8571 10.4457 10.6281 10.625 10.3482 10.625H8.65179C8.37187 10.625 8.14286 10.4457 8.14286 10.2266V8.89844ZM8.14286 13.1484C8.14286 12.9293 8.37187 12.75 8.65179 12.75H10.3482C10.6281 12.75 10.8571 12.9293 10.8571 13.1484V14.4766C10.8571 14.6957 10.6281 14.875 10.3482 14.875H8.65179C8.37187 14.875 8.14286 14.6957 8.14286 14.4766V13.1484ZM2.71429 8.89844C2.71429 8.6793 2.9433 8.5 3.22321 8.5H4.91964C5.19955 8.5 5.42857 8.6793 5.42857 8.89844V10.2266C5.42857 10.4457 5.19955 10.625 4.91964 10.625H3.22321C2.9433 10.625 2.71429 10.4457 2.71429 10.2266V8.89844ZM2.71429 13.1484C2.71429 12.9293 2.9433 12.75 3.22321 12.75H4.91964C5.19955 12.75 5.42857 12.9293 5.42857 13.1484V14.4766C5.42857 14.6957 5.19955 14.875 4.91964 14.875H3.22321C2.9433 14.875 2.71429 14.6957 2.71429 14.4766V13.1484ZM16.9643 2.125H14.9286V0.53125C14.9286 0.239062 14.6232 0 14.25 0H12.8929C12.5196 0 12.2143 0.239062 12.2143 0.53125V2.125H6.78571V0.53125C6.78571 0.239062 6.48036 0 6.10714 0H4.75C4.37679 0 4.07143 0.239062 4.07143 0.53125V2.125H2.03571C0.91183 2.125 0 2.83887 0 3.71875V5.3125H19V3.71875C19 2.83887 18.0882 2.125 16.9643 2.125Z"
-            fill="#B3ACAC"
-          />
-        </svg>
-        {i.data}
-      </span>
-      <p>
-      <p>{i.text}</p>
-      </p>
-      <div className={styles.btn_cont}>
-        <button>читать больше</button>
-        <p>{i.voice} голосов</p>
+    <div>
+      <h2 className={styles.title}>Поиск по категории</h2>
+      <select
+        onChange={handleCategoryChange}
+        value={selectedCategory}
+        className={styles.categorySelect}
+      >
+        <option value="">Все категории</option>
+        <option value="медицина">Медицина</option>
+        <option value="суды">Суды</option>
+        <option value="природа">Природа</option>
+        <option value="бизнес">Бизнес</option>
+        <option value="религия">Религия</option>
+      </select>
+
+      <div className={styles.postList}>
+        {filteredData.map((item, index) => (
+          <div key={index} className={styles.post}>
+            <h2>{item.title}</h2>
+            <span>{item.date}</span>
+            <p>{item.text}</p>
+            <div className={styles.btnCont}>
+              <button>читать больше</button>
+              <p>{item.voice} голосов</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-    ))}
-  </>
   );
 };
 
-export default ProfilePost;
+export default Search;
