@@ -1,0 +1,95 @@
+.FullPost {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.votes {
+  display: flex;
+  align-items: center;
+  div {
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+    margin: 10px;
+    border-radius: 4px;
+  }
+}
+.author {
+  font-weight: bold;
+}
+
+.created-date {
+  font-style: italic;
+}
+
+.agreement {
+  color: rgb(74, 135, 74);
+}
+.disagreement {
+  color: rgb(255, 36, 36);
+}
+button.agreement {
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 2px solid green;
+  background-color: transparent;
+}
+button.disagreement {
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 2px solid rgb(207, 0, 0);
+  background-color: transparent;
+}
+.post-description {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  .show-btn {
+    text-decoration: underline;
+    font-size: 14px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+button,
+a {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.read-more {
+  background-color: #ccc;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+}
+
+.agree {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.disagree {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

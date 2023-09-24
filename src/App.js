@@ -5,6 +5,7 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import Nav from "./components/Nav/Nav";
 import Post from "./pages/Post/Post";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/post/:id" element={<Post />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </div>

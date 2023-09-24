@@ -6,7 +6,7 @@ function Post({ data }) {
     <div className={styles.post}>
       <div className={styles["post-header"]}>
         <div className={styles.author}>{data.author}</div>
-        <div className={styles["created-date"]}>{data.date}</div>
+        <div className={styles["created-date"]}>{data.created_date}</div>
       </div>
       <div className={styles["post-title"]}>{data.title}</div>
       <div className={styles["post-description"]}>{ data.content.slice(0, 100)} ...</div>

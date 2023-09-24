@@ -44,36 +44,39 @@ function RegistrationForm() {
     //   password,
     // });
     try {
-      axios.post(api + "register/", {
-        first_name,
-        middle_name,
-        last_name,
-        gender,
-        citizenship,
-        date_of_birth,
-        document_id,
-        date_of_expiry,
-        place_of_birth,
-        authority,
-        date_of_issue,
-        ethnicity,
-        personal_number,
-        email,
-        phone_number: phone,
-        password,
-      }).then((res)=>{
-        localStorage.setItem('access', res.data.access_token);
-        localStorage.setItem('refresh', res.data.refresh_token);
-      }).catch((error) => {
-        if (error.response) {
-          console.error("Server responded with:", error.response.data);
-          console.error("Status code:", error.response.status);
-        } else if (error.request) {
-          console.error("No response received:", error.request);
-        } else {
-          console.error("Error:", error.message);
-        }
-      });;
+      axios
+        .post(api + "register/", {
+          first_name,
+          middle_name,
+          last_name,
+          gender,
+          citizenship,
+          date_of_birth,
+          document_id,
+          date_of_expiry,
+          place_of_birth,
+          authority,
+          date_of_issue,
+          ethnicity,
+          personal_number,
+          email,
+          phone_number: phone,
+          password,
+        })
+        .then((res) => {
+          // localStorage.setItem("email", email);
+          localStorage.setItem("access", res.data.access_token);
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.error("Server responded with:", error.response.data);
+            console.error("Status code:", error.response.status);
+          } else if (error.request) {
+            console.error("No response received:", error.request);
+          } else {
+            console.error("Error:", error.message);
+          }
+        });
     } catch (e) {
       console.log(e);
     }
@@ -83,7 +86,6 @@ function RegistrationForm() {
     <div className={styles["registration-form"]}>
       <h2>Registration</h2>
       <form onSubmit={handleSubmit}>
-
         <div className={styles[side === "front" ? "front-side" : "hide"]}>
           <div className={styles["photo"]}></div>
           <div className={styles["front-info"]}>
@@ -265,8 +267,7 @@ function RegistrationForm() {
         <div
           className={styles["turn"]}
           onClick={() => setSide(side === "back" ? "front" : "back")}
-        >
-        </div>
+        ></div>
         <div>
           <div className={styles["form-group"]}>
             <label htmlFor="email">Email:</label>
@@ -302,11 +303,29 @@ function RegistrationForm() {
             />
           </div>
         </div>
-        <input value={agree} type="checkbox" id="agreement" onChange={()=>setAgree(!agree)}/>
-        <label className={styles['agreement-label']} htmlFor="agreement">Я согласен со всеми условиями и политикой сайта. <a href="https://www.transparency.org/en" target="_blank" rel="noreferrer">Условия</a></label>
-        <button disabled={true}  type="submit" className={styles[!agree?"disabled":"submit-button"]}>
+        <input
+          value={agree}
+          type="checkbox"
+          id="agreement"
+          onChange={() => setAgree(!agree)}
+        />
+        <label className={styles["agreement-label"]} htmlFor="agreement">
+          Я согласен со всеми условиями и политикой сайта.{" "}
+          <a
+            href="https://www.transparency.org/en"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Условия
+          </a>
+        </label>
+        <button
+          disabled={!agree}
+          type="submit"
+          className={styles[!agree ? "disabled" : "submit-button"]}
+        >
           Register
-        </button> 
+        </button>
       </form>
     </div>
   );
